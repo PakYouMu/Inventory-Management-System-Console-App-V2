@@ -134,10 +134,5 @@ namespace Inventory_Management_System_Console_App
         {
             get { return listOfOrders; }
         }
-
-        public override string ToString()
-        {
-            return "Order ID: " + this.orderID + " Product: " + product.GetName + " Customer: " + customer.GetName + " Quantity: " + this.quantity + " Price: " + this.price;
-        }
     }
 }
