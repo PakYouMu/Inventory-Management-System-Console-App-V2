@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Runtime.CompilerServices;
@@ -13,11 +14,11 @@ namespace Inventory_Management_System_Console_App
         private string name;
         private int quantity;
         private double price;
-        private string category;
+        private Category category;
         private int productID;
         private static int nextProductID = 1;
 
-        public Product(string name, int quantity, double price, string category)
+        public Product(string name, int quantity, double price, Category category)
         {
             this.name = name;
             this.quantity = quantity;
@@ -28,8 +29,8 @@ namespace Inventory_Management_System_Console_App
         }
 
         public Product(Product product)
-        { 
-            this.name= product.name;
+        {
+            this.name = product.name;
             this.quantity = product.quantity;
             this.price = product.price;
             this.category = product.category;
@@ -54,7 +55,7 @@ namespace Inventory_Management_System_Console_App
             set { price = value; }
         }
 
-        public string GetCategory
+        public Category GetCategory
         {
             get { return category; }
         }

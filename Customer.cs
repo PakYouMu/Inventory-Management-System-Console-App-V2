@@ -21,7 +21,6 @@ namespace Inventory_Management_System_Console_App
             this.email = email;
         }
 
-
         public string GetName
         {
             get { return name; }

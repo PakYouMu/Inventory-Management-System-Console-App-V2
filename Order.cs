@@ -16,8 +16,8 @@ namespace Inventory_Management_System_Console_App
         private int orderID;
         private static int nextOrderID = 1;
 
-        //private ICollection<Product>? products = null;
-        private List<Order> orders = new List<Order>();
+        private List<Product> listOfProducts = new List<Product>();
+        private List<Order> listOfOrders = new List<Order>();
         public Order(Product product, Customer customer, int quantity, double price)
         {
             this.product = product;
@@ -32,9 +32,11 @@ namespace Inventory_Management_System_Console_App
 
         //Order constructor to add a list of products
         //dont know how to do this yet
-        /*public Order(ICollection<Product>? products, Customer customer, int quantity, double price)
+        /*public Order(List<Product> products, Customer customer, int quantity, double price)
         {
-            this.products = products;
+            this.product = new Product();
+            this.customer = customer;
+            this.listOfProducts = products;
             this.customer = customer;
             this.quantity = quantity;
             this.price = price;
@@ -54,7 +56,7 @@ namespace Inventory_Management_System_Console_App
 
         public void AddProduct(Product product)
         {
-            orders.Add(new Order(product, customer, quantity, price));
+            listOfOrders.Add(new Order(product, customer, quantity, price));
         }
 
         //Doesn't remove the product, the logic is wrong; but at least there's no error...yet
@@ -65,12 +67,12 @@ namespace Inventory_Management_System_Console_App
             Product product1 = new Product(product);
 
             //Cycle through the list of orders
-            foreach (Order orders in orders)
+            foreach (Order orders in listOfOrders)
             {
                 //Remove the order if the product ID matches
                 if (order1.GetID == product1.GetID)
                 {
-                    this.orders.Remove(order1);
+                    this.listOfOrders.Remove(order1);
                 }
             }
         }
@@ -100,7 +102,7 @@ namespace Inventory_Management_System_Console_App
 
         public void RemoveOrder()
         {
-            this.orders.Remove(new Order(product, customer, quantity, price));
+            this.listOfOrders.Remove(new Order(product, customer, quantity, price));
         }
 
         public Product GetProduct
@@ -128,10 +130,10 @@ namespace Inventory_Management_System_Console_App
             get { return orderID; }
         }
 
-        /*public List<Order> orders
+        public List<Order> GetListOfOrders
         {
-            get { return orders; }
-        }*/
+            get { return listOfOrders; }
+        }
 
         public override string ToString()
         {
