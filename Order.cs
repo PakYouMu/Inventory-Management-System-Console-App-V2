@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,19 +21,21 @@ namespace Inventory_Management_System_Console_App
        
         public Order(Product product, Customer customer, int quantity, double price)
         {
-            this.listOfProducts.Add(product);
+            this.product = product;
             this.customer = customer;
             this.quantity = quantity;
             this.price = this.quantity * price;
             this.orderID = nextOrderID;
             Order.nextOrderID++;
 
+            this.listOfProducts.Add(this.product);
             product.GetQuantity -= quantity;
         }
 
         public Order(Order order)
         {
             this.product = order.product;
+            this.listOfProducts.Add(order.product);
             this.customer = order.customer;
             this.quantity = order.quantity;
             this.price = order.price;
@@ -50,10 +53,7 @@ namespace Inventory_Management_System_Console_App
         {
             Product? productToRemove = listOfProducts.Find(p => p.GetID == productID);
             if (productToRemove != null)
-            {
                 listOfProducts.Remove(productToRemove);
-            }
-            
         }
 
         public void UpdateQuantity(Product productQuantity)
@@ -67,11 +67,6 @@ namespace Inventory_Management_System_Console_App
         {
             Product product = new Product(productPrice);
             product.GetPrice += productPrice.GetPrice;
-        }
-
-        public void RemoveOrder()
-        {
-            
         }
 
         public Product GetProduct
