@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Inventory_Management_System_Console_App
 {
-    public class Order
+    public class Order : ICloneable
     {
         private Product product;
         private Customer customer;
@@ -32,7 +32,7 @@ namespace Inventory_Management_System_Console_App
             product.GetQuantity -= quantity;
         }
 
-        public Order(Order order)
+        private Order(Order order)
         {
             this.product = order.product;
             this.listOfProducts.Add(order.product);
@@ -91,6 +91,11 @@ namespace Inventory_Management_System_Console_App
         public int GetID
         {
             get { return orderID; }
+        }
+
+        public object Clone()
+        {
+            return new Order(this);
         }
     }
 }

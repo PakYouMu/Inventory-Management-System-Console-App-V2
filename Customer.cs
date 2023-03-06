@@ -25,7 +25,7 @@ namespace Inventory_Management_System_Console_App
             nextCustomerID++;
         }
 
-        public Customer(Customer customer)
+        private Customer(Customer customer)
         {
             this.name = customer.name;
             this.address = customer.address;

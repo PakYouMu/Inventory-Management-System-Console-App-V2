@@ -20,7 +20,7 @@ namespace Inventory_Management_System_Console_App
             nextCategoryID++;
         }
 
-        public Category(Category category)
+        private Category(Category category)
         {
             this.name = category.name;
         }

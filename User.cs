@@ -36,7 +36,7 @@ namespace Inventory_Management_System_Console_App
             this.userID = nextUserID++;
         }
 
-        public User(User user)
+        private User(User user)
         {
             this.username = user.username;
             this.password = user.password;

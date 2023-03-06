@@ -73,5 +73,10 @@ namespace Inventory_Management_System_Console_App
         {
             return obj != null && obj is Product;
         }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(name, quantity, price, category, productID);
+        }
     }
  }
