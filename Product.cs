@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Inventory_Management_System_Console_App
 {
-    public class Product
+    public class Product : ICloneable
     {
         private string name;
         private int quantity;
@@ -35,7 +35,6 @@ namespace Inventory_Management_System_Console_App
             this.price = product.price;
             this.category = product.category;
             this.productID = nextProductID;
-            nextProductID++;
         }
 
         public string GetName
@@ -63,6 +62,16 @@ namespace Inventory_Management_System_Console_App
         public int GetID
         {
             get { return productID; }
+        }
+
+        public object Clone()
+        {
+            return new Product(this);
+        }
+
+        public override bool Equals(object? obj)
+        {
+            return obj != null && obj is Product;
         }
     }
  }

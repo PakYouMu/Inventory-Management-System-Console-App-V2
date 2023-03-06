@@ -40,7 +40,6 @@ namespace Inventory_Management_System_Console_App
             this.quantity = order.quantity;
             this.price = order.price;
             this.orderID = order.orderID;
-            Order.nextOrderID++;
         }
 
         public void AddProduct(Product product)

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Inventory_Management_System_Console_App
 {
-    public class User
+    public class User : ICloneable
     {
         private string username;
         private string password;
@@ -33,8 +33,7 @@ namespace Inventory_Management_System_Console_App
             this.phoneNumber = phoneNumber;
             this.address = address;
             this.role = role;
-            this.userID = nextUserID;
-            nextUserID++;
+            this.userID = nextUserID++;
         }
 
         public User(User user)
@@ -45,8 +44,7 @@ namespace Inventory_Management_System_Console_App
             this.phoneNumber = user.phoneNumber;
             this.address = user.address;
             this.role = user.role;
-            this.userID = nextUserID;
-            nextUserID++;
+            this.userID = user.userID;
         }
 
         public string GetUsername
@@ -94,6 +92,11 @@ namespace Inventory_Management_System_Console_App
         {
             string role = this.role.ToString().ToLower();
             return role == "employee";
+        }
+
+        public object Clone()
+        {
+            return new User(this);
         }
     }
 }

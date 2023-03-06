@@ -7,18 +7,31 @@ using System.Threading.Tasks;
 
 namespace Inventory_Management_System_Console_App
 {
-    public class Customer
+    public class Customer : ICloneable
     {
         private String name;
         private String address;
         private String phoneNumber;
         private String email;
+        private int customerID;
+        private static int nextCustomerID = 1;
         public Customer(String name, String address, String phoneNumber, String email = "")
         {
             this.name = name;
             this.address = address;
             this.phoneNumber = phoneNumber;
             this.email = email;
+            this.customerID = nextCustomerID;
+            nextCustomerID++;
+        }
+
+        public Customer(Customer customer)
+        {
+            this.name = customer.name;
+            this.address = customer.address;
+            this.phoneNumber = customer.phoneNumber;
+            this.email = customer.email;
+            this.customerID = nextCustomerID;
         }
 
         public string GetName
@@ -39,6 +52,16 @@ namespace Inventory_Management_System_Console_App
         public string GetEmail
         {
             get { return email; }
+        }
+
+        public int GetCustomerID
+        {
+            get { return customerID; }
+        }
+
+        public object Clone()
+        {
+            return new Customer(this);
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Inventory_Management_System_Console_App
 {
-    public class Category
+    public class Category : ICloneable
     {
         private string? name;
 
@@ -43,6 +43,11 @@ namespace Inventory_Management_System_Console_App
         public void RemoveSubCategory(string categoryName)
         {
             this.listOfCategory.RemoveAll(o => o == categoryName);
+        }
+
+        public object Clone()
+        {
+            return new Category(this);
         }
     }
 }
